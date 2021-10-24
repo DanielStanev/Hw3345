@@ -1,0 +1,6 @@
+Create a function that returns the height of a subtree.
+This function will be recursively called starting at the root of the tree.
+The function will return one more than whatever is larger between the height of the left and right subtree.
+The base case of the recursive function is a node whose child is NULL; having a child == NULL means that that subtree's height is 0.
+If at any point the left and right subtrees have a height difference greater than one, a class variable denoting whether the tree is balanced is set to false.
+Since every node is accessed exactly once, the algorithm is O(n) or linear is growth.
