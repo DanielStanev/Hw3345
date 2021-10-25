@@ -25,6 +25,7 @@ public class Problem4_26 {
         public AVL() { root = null; }
 
         int max(int x, int y) { return (x > y) ? x : y; }
+        int height(Node node) { return node.height; }
 
         Node insert(Node node, int data) {
             if (node == null)

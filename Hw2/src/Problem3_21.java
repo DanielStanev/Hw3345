@@ -93,9 +93,30 @@ public class Problem3_21 {
                         balance.pop();
                     else return i;
                 }
+                else if (input[i] == 'e' && lang == 1) {
+                    if (input.substring(i, i + 2) == "end") {
+                        if (balance.peek() == 1)
+                            balance.pop()
+                        else 
+                            return i;
+                    }
+                    else 
+                        continue;
+                }
+                else if (input[i] == '*' && lang == 2) {
+                    if (input.substring(i, i + 1) == "*/") {
+                        if (balance.peek() == 1)
+                            balance.pop()
+                        else 
+                            return i;
+                    }
+                    else 
+                        continue;
+                }
             }
-            return -1;
+            if (balance.isEmpty())
+                return -1;
+            return -2;
         }
 
     }
-}
