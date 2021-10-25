@@ -1,0 +1,5 @@
+Since hashing is an O(1) operation, in a worst case scenario where ever input is hashed
+the running time will be O(n), since every input is hashed exactly once. After a matching hash,
+the two strings must be compared character by character to see if they are a match. If they are not a match
+the hashing must resume. Since some time is spent refuting false matches the running time of the algorithm is
+O(n) plus some time spent refuting the matches = O(k + n).

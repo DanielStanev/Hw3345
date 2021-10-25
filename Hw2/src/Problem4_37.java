@@ -1,4 +1,18 @@
-package src;
+/************************************
+ 
+ Author:         Daniel Stanev
+ Course:         CS 3345.004
+ Date:           25 Oct 2021
+ Assignment:     Homework #02
+ Version:        Java SE 11 (LTS)
+ 
+ Description: Demonstration of the
+ printRange method described in 
+ Exercise 4.37 of the textbook.
+ 
+ *************************************/
+
+
 public class Problem4_37 {
 
     //  This is a very small implementation of a BST, it is only meant

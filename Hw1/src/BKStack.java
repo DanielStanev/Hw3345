@@ -28,8 +28,8 @@ public interface BKStack {
     /**
      * peek
      * 
-     * @throws EmptyStackException f stack is empty
-     *             i
+     * @throws EmptyStackException if stack is empty
+     *             
      */
     public double peek();
 }
