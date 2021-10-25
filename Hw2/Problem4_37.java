@@ -1,13 +1,13 @@
-public class Problem4-37 {
+public class Problem4_37 {
 
     //  This is a very small implementation of a BST, it is only meant
-    //  to demonstrate the printInRange method for Exercise 4.37
+    //  to demonstrate the printRange method for Exercise 4.37
     static class BST {
         // The BST only needs the root Node as a data field
         Node root;
 
         // Definition of the Node class
-        private class Node {
+        public class Node {
             // Data Fields
             int data;
             Node l;
@@ -43,7 +43,7 @@ public class Problem4-37 {
                 // if data belongs in left subtree
                 else if (data > this.data) {
                     if (r == null) 
-                        r = new Node(keyword);
+                        r = new Node(data);
                     else
                         r.insert(data); // recursive call
                 }
@@ -57,17 +57,41 @@ public class Problem4-37 {
 
         // insert method
         public void insert(int data) {
-            if (root == null) {
+            if (root == null)
                 root = new Node(data);
             else
                 root.insert(data);
         }
 
+        public static void printRange(Node head, int lower, int upper) {
+            if (head.l != null)
+                printRange(head.getL(), lower, upper);
+            if (head.getData() >= lower && head.getData() <= upper)
+                System.out.printf("%d ", head.getData());
+            if (head.r != null)
+                printRange(head.getR(), lower, upper);
+        }
     } // end class BST
 
 
     public static void main(String[] x) {
+        int info, lower, upper;
+        BST tree = new BST();
+        java.util.Scanner input = new java.util.Scanner(System.in);
+
+        do {
+            System.out.print("Enter a positive integer to insert into tree or negative to quit: ");
+            info = input.nextInt();
+            if (info >= 0)
+                tree.insert(info);
+        } while (info >= 0);
+
+        System.out.print("Enter a lower bound: ");
+        lower = input.nextInt();
+        System.out.print("Enter an upper bound: ");
+        upper = input.nextInt();
+
+        tree.printRange(tree.getRoot(), lower, upper);
 
     } // end main
-
 }
