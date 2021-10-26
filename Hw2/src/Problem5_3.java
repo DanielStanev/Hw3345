@@ -59,10 +59,8 @@ public class Problem5_3 {
         public void doubleHash(int info) {
             int keyOne = info % TABLESIZE;
             int keyTwo = keyOne;
-            System.out.println(info + "-" + keyTwo);
             int i = 1;
             while (data[keyTwo] != 0) {
-                System.out.println(info + " " + keyTwo);
                 doublehashCollisions++;
                 keyTwo = keyOne + (i * (17 - (keyOne % 17)));
                 i++;
@@ -99,7 +97,7 @@ public class Problem5_3 {
         doubleTable.doubleHash(1);  // Expected Collisions: 2
         doubleTable.doubleHash(33); // Expected Collisions: 3
         doubleTable.doubleHash(16); // Expected Collisions: 3
-        doubleTable.doubleHash(16); // Expected Collisions: 3
+        doubleTable.doubleHash(16); // Expected Collisions: 5
         doubleTable.doubleHash(54); // Expected Collisions: 5
         doubleTable.doubleHash(154);// Expected Collisions: 6
 
