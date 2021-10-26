@@ -78,6 +78,7 @@ public class Problem4_37 {
                 root.insert(data);
         }
 
+        // The method that the exercise asks for
         public static void printRange(Node head, int lower, int upper) {
             if (head.l != null)
                 printRange(head.getL(), lower, upper);

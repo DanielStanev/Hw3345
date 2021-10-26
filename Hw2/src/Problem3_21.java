@@ -1,5 +1,19 @@
+/************************************
+ 
+ Author:         Daniel Stanev
+ Course:         CS 3345.004
+ Date:           25 Oct 2021
+ Assignment:     Homework #02
+ Version:        Java SE 11 (LTS)
+ 
+ Description: Exercise 3.21
+
+ checking for balance using a Stack.
+ 
+ *************************************/
+
 public class Problem3_21 {
-    public class Stack {
+    public static class Stack {
         // Data Fields
         public static final int INITIAL_CAPACITY = 32;
         public static final int SCALE_FACTOR = 2;
@@ -7,7 +21,7 @@ public class Problem3_21 {
         private int size = 0;
     
         // Constructor
-        Stack() { data = new double[INITIAL_CAPACITY]; }
+        Stack() { data = new int[INITIAL_CAPACITY]; }
     
         // Resizes the data array.
         private void resize(int newSize) {
@@ -42,15 +56,17 @@ public class Problem3_21 {
         String sentence;
         java.util.Scanner input = new java.util.Scanner(System.in);
 
+        // Takes in user input
         System.out.print("Enter String to check for balancing: ");
         sentence = input.nextLine();
         do {
-            System.out.print("Select a language (1 - Pascal, 2 - Java): ")
+            System.out.print("Select a language (1 - Pascal, 2 - Java): ");
             lang = input.nextInt();
             if (lang < 1 && lang > 2)
                 System.out.println("Invalid input");
         } while (lang != 1 && lang != 2);
 
+        // Checks for balance 
         error = checkBalancing(sentence, lang);
         if (error == -2)
             System.out.println("The string does not close all opening characters");
@@ -62,51 +78,65 @@ public class Problem3_21 {
 
     public static int checkBalancing(String input, int lang) {
             Stack balance = new Stack();
-
+            
+            // Loops through the string
             for (int i = 0; i < input.length(); i++) {
-                if (input[i] == 'b' && lang == 1) {
+                // All of the open chars
+                if (input.charAt(i) == 'b' && lang == 1) {
                     if (input.substring(i, i + 4) == "begin")
                         balance.push(1);
                 }
-                else if (input[i] == '/' && lang == 2) {
+                else if (input.charAt(i) == '/' && lang == 2) {
                     if (input.substring(i, i + 1) == "/*")
                         balance.push(1);
                 }
-                else if (input[i] == '(')
+                else if (input.charAt(i) == '(')
                     balance.push(2);
-                else if (input[i] == '[')
+                else if (input.charAt(i) == '[')
                     balance.push(3);
-                else if (input[i] == '{')
+                else if (input.charAt(i) == '{')
                     balance.push(4); 
-                else if (input[i] == '}') {
+
+                // All of the closing Chars
+                else if (input.charAt(i) == '}') {
+                    if (balance.isEmpty())
+                        return i;
                     if (balance.peek() == 4)
                         balance.pop();
                     else return i;
                 }
-                else if (input[i] == ']') {
+                else if (input.charAt(i) == ']') {
+                    if (balance.isEmpty())
+                        return i;
                     if (balance.peek() == 3)
                         balance.pop();
                     else return i;
                 }
-                else if (input[i] == ')') {
+                else if (input.charAt(i) == ')') {
+                    if (balance.isEmpty())
+                        return i;
                     if (balance.peek() == 2)
                         balance.pop();
                     else return i;
                 }
-                else if (input[i] == 'e' && lang == 1) {
+                else if (input.charAt(i) == 'e' && lang == 1) {
                     if (input.substring(i, i + 2) == "end") {
+                        if (balance.isEmpty())
+                            return i;
                         if (balance.peek() == 1)
-                            balance.pop()
+                            balance.pop();
                         else 
                             return i;
                     }
                     else 
                         continue;
                 }
-                else if (input[i] == '*' && lang == 2) {
+                else if (input.charAt(i) == '*' && lang == 2) {
                     if (input.substring(i, i + 1) == "*/") {
+                        if (balance.isEmpty())
+                            return i;
                         if (balance.peek() == 1)
-                            balance.pop()
+                            balance.pop();
                         else 
                             return i;
                     }
@@ -114,9 +144,11 @@ public class Problem3_21 {
                         continue;
                 }
             }
+
+            // if the stack is empty, then everything was closed
             if (balance.isEmpty())
                 return -1;
-            return -2;
+            return -2;  // else some opening characters were not closed
         }
 
     }
