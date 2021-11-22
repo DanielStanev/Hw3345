@@ -1,0 +1,11 @@
+a)  If the mergesort implementation checks if the input is sorted beforehand,
+    the complexity is O(n), otherwise it is O(n log(n)).
+
+b)  Since mergesort breaks down the input into its smallest units and sorts them
+    as it combines them the, it executes with a complexity of O(n log(n)).
+
+c)  Since the worst case complexity of mergesort is O(n log(n)), 
+    we can expect a random input to have the same performance.
+
+    Basically all 3 cases have the complexity O(n log(n)) unless a check
+    for special cases is implemented.

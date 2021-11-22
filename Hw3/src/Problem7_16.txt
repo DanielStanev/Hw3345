@@ -1,0 +1,13 @@
+Start with an array of size n.
+
+since merge sort splits it into chunks
+a variable k will keep track of the size.
+
+k = 1 // size of chunks
+
+for (; k <= n ; k *= 2) // iterates until k reaches n, update condition doubles keep
+    i = 0
+    for (; i <= n - k; i += 2k)
+        inplace merge the subarrays: 
+        (i through i + k - 1) and 
+        (i + k through the min of (i - 1 + 2k and k - 1))
