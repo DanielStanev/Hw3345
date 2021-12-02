@@ -1,0 +1,7 @@
+Problem 9.1:
+
+Topological sort means removing nodes in an order that leaves no
+dependencies on the nodes at the time that they are removed.
+
+Valid topological sort:         SGDABHEIFCT
+Another valid topological sort: SGHDABEIFCT
